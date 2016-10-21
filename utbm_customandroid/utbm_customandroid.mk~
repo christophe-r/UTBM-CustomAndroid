@@ -3,9 +3,9 @@ $(call inherit-product, device/linaro/arrow/arrow.mk)
 
 #PRODUCT_PACKAGES +=
 	
-DEVICE_PACKAGE_OVERLAYS := device/utbm/CustomAndroid/overlay
+DEVICE_PACKAGE_OVERLAYS := device/utbm/utbm_customandroid/overlay
 
-PRODUCT_COPY_FILES += device/utbm/CustomAndroid/copy/bootanimation.zip:system/media/bootanimation.zip
+PRODUCT_COPY_FILES += device/utbm/utbm_customandroid/copy/bootanimation.zip:system/media/bootanimation.zip
 
 
 #PRODUCT_PROPERTY_OVERRIDES +=
