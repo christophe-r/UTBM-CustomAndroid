@@ -13,9 +13,9 @@ LOCAL_MODULE_TAGS := optional
 
 #LOCAL_CFLAGS := -Werror
 
-LOCAL_SRC_FILES:= src/mlbin_jni.c
+LOCAL_SRC_FILES:= src/libmlbin_jni.c
 
-LOCAL_C_INCLUDES:= device/utbm/utbm_customandroid/external/mlbin_jni/src/ \
+LOCAL_C_INCLUDES:= device/utbm/utbm_customandroid/external/libmlbin_jni/src/ \
 		   device/utbm/utbm_customandroid/external/mlbin/src/ \
 
 LOCAL_SHARED_LIBRARIES := libmlbin

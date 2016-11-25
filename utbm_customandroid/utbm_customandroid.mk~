@@ -1,8 +1,13 @@
 $(call inherit-product, device/linaro/arrow/arrow.mk)
 
 
-#PRODUCT_PACKAGES +=
-	
+PRODUCT_PACKAGES += libusb \
+		    mlbin \
+		    libmlbin \
+		    libmlbin_jni \
+		    com.android.utbm.customandroid.MissileLauncherInterface \
+		    com.android.utbm.customandroid.MissileLauncherInterface.xml
+
 DEVICE_PACKAGE_OVERLAYS := device/utbm/utbm_customandroid/overlay
 
 PRODUCT_COPY_FILES += device/utbm/utbm_customandroid/copy/bootanimation.zip:system/media/bootanimation.zip
@@ -16,5 +21,5 @@ PRODUCT_DEVICE:= utbm_customandroid
 PRODUCT_BRAND:= UTBM-CustomAndroid
 PRODUCT_MODEL:= UTBM-CustomAndroid-A2016
 
-include $(call all-subdir makefiles)
+#include $(call all-subdir makefiles)
 

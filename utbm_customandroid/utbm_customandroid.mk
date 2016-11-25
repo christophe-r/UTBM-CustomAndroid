@@ -1,7 +1,12 @@
 $(call inherit-product, device/linaro/arrow/arrow.mk)
 
 
-PRODUCT_PACKAGES += libusb
+PRODUCT_PACKAGES += libusb \
+		    mlbin \
+		    libmlbin \
+		    libmlbin_jni \
+		    com.android.utbm.customandroid.MissileLauncherInterface \
+		    com.android.utbm.customandroid.MissileLauncherInterface.xml
 
 DEVICE_PACKAGE_OVERLAYS := device/utbm/utbm_customandroid/overlay
 
