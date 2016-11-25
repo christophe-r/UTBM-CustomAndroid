@@ -3,15 +3,7 @@
 
 #include <libusb.h>
 
-#define ML_VENDOR_ID			0x0416
-#define ML_DEVICE_ID			0x9391
-
-#define ML_ACTION_FIRE			0x10
-#define ML_ACTION_MOVE_DOWN		0x1
-#define ML_ACTION_MOVE_LEFT		0x8
-#define ML_ACTION_MOVE_RIGHT		0x4
-#define ML_ACTION_MOVE_UP		0x2
-#define ML_ACTION_STOP			0x0
+#include "mlbin.h"
 
 static struct libusb_device_handle **devh;
 int nbr_device;
