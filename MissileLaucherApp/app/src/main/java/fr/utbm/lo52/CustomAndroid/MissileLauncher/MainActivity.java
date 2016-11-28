@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
         PointF myPoint = myView.getUserPoint();
         TextView myAwesomeTextView = (TextView)findViewById(R.id.stat);
 
-
-
         myAwesomeTextView.setText("X: " + myPoint.x + " Y: " + myPoint.y + " \nDistance: " + myView.getDistance() );
     }
 }

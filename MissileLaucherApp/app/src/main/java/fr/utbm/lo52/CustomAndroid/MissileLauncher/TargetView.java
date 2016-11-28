@@ -45,8 +45,8 @@ public class TargetView extends View {
     }
 
     protected void initInterface(){
-        Log.i(TAG, "x: " + this.getWidth());
-        Log.i(TAG, "y: " + (float)(this.getHeight()));
+        //Log.i(TAG, "x: " + this.getWidth());
+        //Log.i(TAG, "y: " + (float)(this.getHeight()));
         userPoint = new PointF(this.getWidth()/2, (float)(this.getHeight()/2));
         centerpoint = new PointF(this.getWidth()/2, (float)(this.getHeight()/2));
 
@@ -56,7 +56,7 @@ public class TargetView extends View {
     }
 
     public PointF getUserPoint(){
-        return new PointF(centerpoint.x - userPoint.x, centerpoint.y - userPoint.y) ;
+        return new PointF((centerpoint.x - userPoint.x )/ min_size, (centerpoint.y - userPoint.y)/min_size) ;
     }
 
     public double getDistance(){
@@ -86,18 +86,12 @@ public class TargetView extends View {
         if(min_size > h/3)
             min_size = h/3;
 
-        Log.i(TAG, "onSizeChanged: " + min_size);
+       // Log.i(TAG, "onSizeChanged: " + min_size);
     }
 
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-
-        // Draw the pointer
-        //canvas.drawLine(0, 0, 10, 10, new Paint());
-
-       // canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/2, min_size/10, new Paint());
 
         double dist = Math.sqrt(Math.pow(centerpoint.x - userPoint.x, 2)+ Math.pow(centerpoint.y - userPoint.y, 2) );
         if(dist <= min_size) {
