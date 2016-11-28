@@ -2,6 +2,8 @@ package fr.utbm.lo52.CustomAndroid.mediacenter;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,22 +79,29 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        TextView text = (TextView) findViewById(R.id.textlabel);
+       // TextView text = (TextView) findViewById(R.id.textlabel);
 
+        Fragment fragment;
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            text.setText("Gallery");
-        } else if (id == R.id.nav_slideshow) {
-            text.setText("Slideshow");
-        } else if (id == R.id.nav_manage) {
-            text.setText("Manage");
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        switch(id){
+            case R.id.nav_movies:
+                fragment = new MoviesFragment();
+                break;
+            case R.id.nav_series:
+                fragment = new SeriesFragment();
+                break;
+            case R.id.nav_music:
+                fragment = new MusicFragment();
+                break;
+            default:
+                fragment = new MoviesFragment();
+                break;
 
         }
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        ft.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
