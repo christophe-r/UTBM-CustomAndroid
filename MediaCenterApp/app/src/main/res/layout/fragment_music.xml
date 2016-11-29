@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.utbm.lo52.CustomAndroid.mediacenter.MoviesFragment">
+    tools:context="fr.utbm.lo52.CustomAndroid.mediacenter.View.Fragments.MoviesFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
