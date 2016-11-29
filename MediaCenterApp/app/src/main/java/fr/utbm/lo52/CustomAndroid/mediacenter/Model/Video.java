@@ -6,37 +6,37 @@ package fr.utbm.lo52.CustomAndroid.mediacenter.Model;
 
 public class Video {
     private String title;
-    private String author;
-    private String imageUrl;
+    private String year;
+    private String illustrationPath;
 
-    public Video(String title, String author, String imageUrl) {
+    public Video(String title, String year, String illustrationPath) {
         this.title = title;
-        this.author = author;
-        this.imageUrl = imageUrl;
+        this.year = year;
+        this.illustrationPath = illustrationPath;
     }
 
-    public String getImageUrl(){
-        return imageUrl;
+    public String getIllustrationPath(){
+        return illustrationPath;
     }
 
     public String getTitle(){
         return title;
     }
 
-    public String getAuthor(){
-        return author;
+    public String getYear(){
+        return year;
     }
 
     public void setTitle(String title){
         this.title = title;
     }
 
-    public void setAuthor(String author){
-        this.author = author;
+    public void setYear(String year){
+        this.year = year;
     }
 
-    public void setImageUrl(String imageUrl){
-        this.imageUrl = imageUrl;
+    public void setIllustrationPath(String illustrationPath){
+        this.illustrationPath = illustrationPath;
     }
 
 

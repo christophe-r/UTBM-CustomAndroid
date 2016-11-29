@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.Model.MediasJsonFile;
+import fr.utbm.lo52.CustomAndroid.mediacenter.Model.Movie;
+import fr.utbm.lo52.CustomAndroid.mediacenter.Model.MoviesData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.Model.Video;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.View.VideoCardsAdapter;
@@ -32,23 +35,17 @@ public class MoviesFragment extends Fragment {
         //change R.layout.yourlayoutfilename for each of your fragments
         View rootView =  inflater.inflate(R.layout.fragment_movies, container, false);
 
+        MoviesData jsonData = new MoviesData("medias_movies.json");
+        jsonData.readMovies();
 
-        movies.add(new Video("France","Paris", "movies/big_buck_bunny.jpg"));
-        movies.add(new Video("Italy","Roma", "movies/coffee.jpg"));
-        movies.add(new Video("UK","London", "movies/big_buck_bunny.jpg"));
-        movies.add(new Video("Germany","Berlin", "movies/coffee.jpg"));
-        movies.add(new Video("Spain","Madrid", "movies/big_buck_bunny.jpg"));
+        List<Movie> moviesList = jsonData.getListMovies();
+
+        for (int i = 0; i < moviesList.size(); i++) {
+            movies.add(new Video(moviesList.get(i).getTitle(), moviesList.get(i).getYear(), moviesList.get(i).getIllustrationPath()));
+        }
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMovies);
-
-        //définit l'agencement des cellules, ici de façon verticale, comme une ListView
         recyclerView.setLayoutManager(new LinearLayoutManager(c));
-
-        //pour adapter en grille comme une RecyclerView, avec 2 cellules par ligne
-        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-
-        //puis créer un VideoCardsAdapter, lui fournir notre liste de villes.
-        //cet adapter servira à remplir notre recyclerview
         recyclerView.setAdapter(new VideoCardsAdapter(movies));
 
         return rootView;
