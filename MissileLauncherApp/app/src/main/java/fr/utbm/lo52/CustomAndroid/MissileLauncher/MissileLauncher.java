@@ -5,13 +5,11 @@ import com.android.utbm.customandroid.MissileLauncherInterface;
 
 public class MissileLauncher {
 
-
     private MissileLauncherInterface mlInterface;
 
     public MissileLauncher(){
         mlInterface = new MissileLauncherInterface();
     }
-
 
     public void Init(){
         mlInterface.MlbinInitUsb();
@@ -35,7 +33,6 @@ public class MissileLauncher {
 
     public void MoveRight(int device){
         mlInterface.MlbinMoveRight(device);
-
     }
 
     public void MoveUp(int device){

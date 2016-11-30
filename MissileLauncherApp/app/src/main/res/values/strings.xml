@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Missile Launcher</string>
+    <string name="btn_launch">Launch Missile</string>
+    <string name="title">Missile\nLauncher</string>
 </resources>
