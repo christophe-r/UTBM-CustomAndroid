@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Controller.WatchActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_watch"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>
