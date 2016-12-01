@@ -1,28 +1,46 @@
 package fr.utbm.lo52.CustomAndroid.MissileLauncher;
 
+import android.graphics.PointF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MissileCallback{
 
-    private MissileLauncher missileLauncher;
+    private TargetView targetView;
+    private MissileController missileController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        missileLauncher = new MissileLauncher();
-
         setContentView(R.layout.activity_main);
+
+        targetView = (TargetView) findViewById(R.id.target);
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        missileLauncher.Stop();
-        missileLauncher.FreeUsb();
+    public PointF getTargetData() {
+        return targetView.getUserPoint();
     }
 
+    @Override
+    public boolean isLauncherMoving() {
+        return targetView.isTargetMoving();
+    }
+
+
+    public void fireClick(View v){
+        missileController.fire();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        missileController = new MissileController(this);
+        missileController.start();
+    }
 
     @Override
     public void onStart() {
@@ -32,9 +50,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
+
+        missileController.terminate();
+        try {
+            missileController.join();
+        } catch (InterruptedException e) {
+            missileController.stop();
+        }
     }
 
-    public void fireClick(View v){
-       //TODO
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
+
 }

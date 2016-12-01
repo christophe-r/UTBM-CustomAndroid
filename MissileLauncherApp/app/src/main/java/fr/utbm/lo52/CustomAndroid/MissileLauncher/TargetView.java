@@ -13,6 +13,7 @@ import android.util.AttributeSet;
 import android.support.v4.content.ContextCompat;
 import android.support.annotation.NonNull;
 
+import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_UP;
 
 
@@ -31,6 +32,7 @@ public class TargetView extends View {
     private Paint linePaint = new Paint();
     private Paint userPaint = new Paint();
     private float min_size;
+    private boolean targetMoving = false;
 
     public TargetView(Context context) {
         super(context);
@@ -59,6 +61,8 @@ public class TargetView extends View {
         targetPaint.setColor(ContextCompat.getColor(getContext(), R.color.colorDivider));
         linePaint.setColor(ContextCompat.getColor(getContext(), R.color.colorDivider));
         userPaint.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+
+
     }
 
     /**
@@ -70,11 +74,11 @@ public class TargetView extends View {
     }
 
     /**
-     * @brief Returns the distance (in percentage) to the center of the target
-     * @return (double) The distance
+     * @brief Returns true if the user is currently moving the target
+     * @return (boolean) The value
      */
-    public double getDistance(){
-        return Math.sqrt(Math.pow(centerPoint.x - userPoint.x, 2)+ Math.pow(centerPoint.y - userPoint.y, 2) )/ min_size;
+    public boolean isTargetMoving(){
+        return targetMoving;
     }
 
     /**
@@ -110,8 +114,13 @@ public class TargetView extends View {
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent event) {
         userPoint.set(event.getX(), event.getY());
-        if(event.getActionMasked() == ACTION_UP)
+        if(event.getActionMasked() == ACTION_UP){
+            targetMoving = false;
             startReturnAnim();
+        }
+        if(event.getActionMasked() == ACTION_DOWN)
+            targetMoving = true;
+
         invalidate();
         return true;
     }
