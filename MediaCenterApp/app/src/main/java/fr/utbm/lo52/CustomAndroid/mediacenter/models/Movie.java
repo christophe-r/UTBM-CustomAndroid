@@ -1,10 +1,12 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.models;
 
+import java.io.Serializable;
+
 /**
  * Created by Christophe on 2016-11-29.
  */
 
-public class Movie {
+public class Movie implements Serializable {
     private String title;
     private String year;
     private String illustrationPath;
