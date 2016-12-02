@@ -4,47 +4,64 @@ import android.graphics.PointF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
+public class MainActivity extends AppCompatActivity implements MissileCallback{
 
-public class MainActivity extends AppCompatActivity {
-
-    private MissileLauncher missileLauncher;
-
+    private TargetView targetView;
+    private MissileController missileController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        missileLauncher = new MissileLauncher();
-
         setContentView(R.layout.activity_main);
+
+        targetView = (TargetView) findViewById(R.id.target);
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        missileLauncher.Stop();
-        missileLauncher.FreeUsb();
+    public PointF getTargetData() {
+        return targetView.getUserPoint();
     }
 
+    @Override
+    public boolean isLauncherMoving() {
+        return targetView.isTargetMoving();
+    }
+
+
+    public void fireClick(View v){
+        missileController.fire();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        missileController = new MissileController(this);
+        missileController.start();
+    }
 
     @Override
     public void onStart() {
         super.onStart();
-
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
+        missileController.terminate();
+        try {
+            missileController.join();
+        } catch (InterruptedException e) {
+            missileController.stop();
+        }
     }
 
-    public void fireClick(View v){
-        TargetView myView =  (TargetView)findViewById(R.id.target);
-        PointF myPoint = myView.getUserPoint();
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.stat);
-
-        myAwesomeTextView.setText("X: " + myPoint.x + " Y: " + myPoint.y + " \nDistance: " + myView.getDistance() );
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
+
 }

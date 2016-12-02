@@ -2,42 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_width="fill_parent"
-    android:gravity="center_vertical"
     android:layout_height="wrap_content"
+    android:background="@color/colorBackground"
     tools:context="fr.utbm.lo52.CustomAndroid.MissileLauncher.MainActivity">
 
     <fr.utbm.lo52.CustomAndroid.MissileLauncher.TargetView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.54"
+        android:layout_weight="7.23"
         android:id="@+id/target"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="280dp">
-
-        <Button
-            android:text="FIRE !!!!!"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:layout_marginRight="44dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginBottom="102dp"
-            android:onClick="fireClick" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.21">
 
         <TextView
-            android:text="TextView"
+            android:text="@string/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/stat"
-            android:layout_weight="0.10" />
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.49"
+            android:textSize="36sp"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.47">
+
+            <Button
+                android:text="@string/btn_launch"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:theme="@style/SpecialButton"
+                android:id="@+id/launchBtn"
+                android:onClick="fireClick" />
+        </LinearLayout>
 
     </LinearLayout>
 
