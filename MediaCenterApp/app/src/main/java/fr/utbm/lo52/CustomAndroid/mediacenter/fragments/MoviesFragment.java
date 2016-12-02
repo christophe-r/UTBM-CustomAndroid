@@ -1,6 +1,9 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.View.Fragments;
+package fr.utbm.lo52.CustomAndroid.mediacenter.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,44 +12,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import fr.utbm.lo52.CustomAndroid.mediacenter.Model.MediasJsonFile;
-import fr.utbm.lo52.CustomAndroid.mediacenter.Model.Movie;
-import fr.utbm.lo52.CustomAndroid.mediacenter.Model.MoviesData;
-import fr.utbm.lo52.CustomAndroid.mediacenter.Model.Video;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.MoviesData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
-import fr.utbm.lo52.CustomAndroid.mediacenter.View.VideoCardsAdapter;
+import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.MoviesCardsAdapter;
 
 
 public class MoviesFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private List<Video> movies = new ArrayList<>();
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final FragmentActivity c = getActivity();
-        //returning our layout file
-        //change R.layout.yourlayoutfilename for each of your fragments
+
         View rootView =  inflater.inflate(R.layout.fragment_movies, container, false);
 
-        MoviesData jsonData = new MoviesData("medias_movies.json");
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
+
+        MoviesData jsonData = new MoviesData(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/"), "medias_movies.json");
         jsonData.readMovies();
 
-        List<Movie> moviesList = jsonData.getListMovies();
-
-        for (int i = 0; i < moviesList.size(); i++) {
-            movies.add(new Video(moviesList.get(i).getTitle(), moviesList.get(i).getYear(), moviesList.get(i).getIllustrationPath()));
-        }
+        List<Movie> movies = jsonData.getListMovies();
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMovies);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));
-        recyclerView.setAdapter(new VideoCardsAdapter(movies));
+        recyclerView.setAdapter(new MoviesCardsAdapter(movies));
 
         return rootView;
 
@@ -56,7 +50,6 @@ public class MoviesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Movies");
     }
 }

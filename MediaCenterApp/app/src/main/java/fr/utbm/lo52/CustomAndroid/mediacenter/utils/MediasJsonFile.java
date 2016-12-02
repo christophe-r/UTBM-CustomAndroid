@@ -1,6 +1,5 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.Model;
+package fr.utbm.lo52.CustomAndroid.mediacenter.utils;
 
-import android.os.Environment;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -20,8 +19,10 @@ public class MediasJsonFile {
     private File jsonFile = null;
     protected JSONObject jsonObj = null;
 
-    public MediasJsonFile(String jsonFile) {
-        this.jsonFile = new File(Environment.getExternalStorageDirectory()+"/MediaCenter/", jsonFile);
+
+    public MediasJsonFile(String path, String jsonFile){
+
+        this.jsonFile = new File(path, jsonFile);
         if( this.jsonFile.exists() ){
             Log.v("JSON File Found", this.jsonFile.getPath());
             jsonObj = readJsonFile();

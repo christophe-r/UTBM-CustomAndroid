@@ -1,5 +1,6 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.Controller;
+package fr.utbm.lo52.CustomAndroid.mediacenter.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import fr.utbm.lo52.CustomAndroid.mediacenter.View.Fragments.MoviesFragment;
-import fr.utbm.lo52.CustomAndroid.mediacenter.View.Fragments.MusicFragment;
+import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.MoviesFragment;
+import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.MusicFragment;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
-import fr.utbm.lo52.CustomAndroid.mediacenter.View.Fragments.SeriesFragment;
+import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.SeriesFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,9 +51,9 @@ public class MainActivity extends AppCompatActivity
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
         navigationView.getMenu().getItem(0).setChecked(true);
 
+
+
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settingsActivity = new Intent(this, SettingsActivity.class);
+            startActivity(settingsActivity);
             return true;
         }
 

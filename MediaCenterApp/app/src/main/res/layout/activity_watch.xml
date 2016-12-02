@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="fr.utbm.lo52.CustomAndroid.mediacenter.Controller.WatchActivity">
+    tools:context="fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -37,7 +37,7 @@
                 android:layout_weight="1" />-->
 
             <VideoView
-                android:id="@+id/video_view"
+                android:id="@+id/video_view_frame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -49,25 +49,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Play/Pause" />
-
-        </LinearLayout>
     </FrameLayout>
 
 </FrameLayout>

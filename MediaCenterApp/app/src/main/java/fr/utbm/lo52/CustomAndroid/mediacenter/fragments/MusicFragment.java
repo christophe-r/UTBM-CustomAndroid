@@ -1,4 +1,4 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.View.Fragments;
+package fr.utbm.lo52.CustomAndroid.mediacenter.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

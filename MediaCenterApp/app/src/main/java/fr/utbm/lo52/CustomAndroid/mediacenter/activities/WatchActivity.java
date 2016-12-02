@@ -1,12 +1,18 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.Controller;
+package fr.utbm.lo52.CustomAndroid.mediacenter.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.MediaController;
@@ -58,7 +64,8 @@ public class WatchActivity extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         }
     };
-    private View mControlsView;
+
+
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
@@ -67,7 +74,7 @@ public class WatchActivity extends AppCompatActivity {
             if (actionBar != null) {
                 actionBar.show();
             }
-            mControlsView.setVisibility(View.VISIBLE);
+            //mControlsView.setVisibility(View.VISIBLE);
         }
     };
     private boolean mVisible;
@@ -99,22 +106,23 @@ public class WatchActivity extends AppCompatActivity {
         Intent i = getIntent();
         setTitle(i.getStringExtra("VIDEO_TITLE"));
 
+        setContentView(R.layout.activity_watch);
+
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
         //initialize the VideoView
-       /* myVideoView = (VideoView) findViewById(R.id.video_view);
+        myVideoView = (VideoView) findViewById(R.id.video_view_frame);
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(myVideoView);
         myVideoView.setMediaController(mediaController);
-        myVideoView.setVideoPath("path/to/video.mp4");
-        myVideoView.start();*/
+        myVideoView.setVideoPath(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/")+i.getStringExtra("VIDEO_PATH"));
+        myVideoView.start();
 
 
 
-
-        setContentView(R.layout.activity_watch);
 
         mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
         show();
@@ -127,10 +135,7 @@ public class WatchActivity extends AppCompatActivity {
             }
         });
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
     }
 
     @Override
@@ -161,7 +166,6 @@ public class WatchActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -189,4 +193,16 @@ public class WatchActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
