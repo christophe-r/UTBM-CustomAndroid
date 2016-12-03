@@ -14,7 +14,7 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
  * Created by Christophe on 2016-11-29.
  */
 
-public class MoviesData extends JsonFileReader {
+public class MoviesData extends JsonFileReader{
 
     private List<Movie> listMovies = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class MoviesData extends JsonFileReader {
 
     }
 
-    public List<Movie> getListMovies(){
+    public List<Movie> getList(){
         return listMovies;
     }
 

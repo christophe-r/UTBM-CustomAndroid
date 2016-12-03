@@ -39,11 +39,15 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // "Movies" as default
+        // "Home" as default
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
         navigationView.getMenu().getItem(0).setChecked(true);
 
+
+
     }
+
+
 
     @Override
     public void onBackPressed() {

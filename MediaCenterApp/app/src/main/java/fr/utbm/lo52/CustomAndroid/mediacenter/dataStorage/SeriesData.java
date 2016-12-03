@@ -59,7 +59,7 @@ public class SeriesData extends JsonFileReader {
 
     }
 
-    public List<Serie> getListSeries(){
+    public List<Serie> getList(){
         return listSeries;
     }
 

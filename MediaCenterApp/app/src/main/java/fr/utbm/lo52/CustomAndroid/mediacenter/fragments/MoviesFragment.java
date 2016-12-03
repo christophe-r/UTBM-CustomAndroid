@@ -2,7 +2,6 @@ package fr.utbm.lo52.CustomAndroid.mediacenter.fragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.Factory;
 import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.MoviesCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
 import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MoviesData;
@@ -32,15 +32,11 @@ public class MoviesFragment extends Fragment {
 
         View rootView =  inflater.inflate(R.layout.fragment_list, container, false);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
-
-        MoviesData jsonData = new MoviesData(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/"), "medias_movies.json");
-
-        List<Movie> movies = jsonData.getListMovies();
+        MoviesData moviesData = (MoviesData) Factory.get("Data-movies");
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewListCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));
-        recyclerView.setAdapter(new CardsListAdapter<Movie>(movies, MoviesCardViewHolder.class, R.layout.cell_card_movie));
+        recyclerView.setAdapter(new CardsListAdapter<Movie>(moviesData.getList(), MoviesCardViewHolder.class, R.layout.cell_card_movie));
 
         return rootView;
 

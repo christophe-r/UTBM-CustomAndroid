@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Preview;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.Factory;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
 
 /**

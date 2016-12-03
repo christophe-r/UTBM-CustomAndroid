@@ -12,15 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
-import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MoviesData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.PreviewData;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Preview;
-import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.MoviesCardViewHolder;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.Factory;
 import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.PreviewCardViewHolder;
 
 /**
@@ -39,12 +36,9 @@ public class HomeFragment extends Fragment {
 
         View rootView =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
-        String path = sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/");
-
-        PreviewData moviesPreviewData = new PreviewData(path, "medias_movies.json", "movies");
-        PreviewData seriesPreviewData = new PreviewData(path, "medias_series.json", "series");
-        PreviewData musicsPreviewData = new PreviewData(path, "medias_music.json", "music");
+        PreviewData moviesPreviewData = (PreviewData) Factory.get("Preview-movies");
+        PreviewData seriesPreviewData = (PreviewData) Factory.get("Preview-series");
+        PreviewData musicsPreviewData = (PreviewData) Factory.get("Preview-music");
 
 
         recyclerViewHomeMovies = (RecyclerView) rootView.findViewById(R.id.recyclerViewHomeMovies);
@@ -63,14 +57,9 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void configureRecyclerView(){
-
-    }
-
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Movies");
+        getActivity().setTitle("Home");
     }
 }
