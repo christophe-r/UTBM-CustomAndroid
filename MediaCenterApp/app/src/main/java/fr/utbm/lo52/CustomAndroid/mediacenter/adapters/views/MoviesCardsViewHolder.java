@@ -1,4 +1,4 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.adapters;
+package fr.utbm.lo52.CustomAndroid.mediacenter.adapters.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 import java.io.File;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity;
+import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 
@@ -24,12 +25,13 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.R;
  * Created by Christophe on 2016-11-29.
  */
 
-public class MoviesCardsViewHolder extends RecyclerView.ViewHolder{
+public class MoviesCardsViewHolder extends CardsViewHolder {
 
     private TextView videoTitleView;
     private TextView videoYearView;
     private ImageView videoImageView;
     private Button videoButtonWatch;
+    private Button videoButtonMoreDetail;
     private final Context context;
     private SharedPreferences sp;
 
@@ -44,10 +46,13 @@ public class MoviesCardsViewHolder extends RecyclerView.ViewHolder{
         videoYearView = (TextView) itemView.findViewById(R.id.movie_year);
         videoImageView = (ImageView) itemView.findViewById(R.id.movie_image);
         videoButtonWatch = (Button) itemView.findViewById(R.id.movie_button_watch);
+        videoButtonMoreDetail = (Button) itemView.findViewById(R.id.movie_button_more_details);
 
     }
 
-    public void bind(Movie movie){
+    @Override
+    public void bind(Object data) {
+        Movie movie = (Movie) data;
         videoTitleView.setText(movie.getTitle());
         videoYearView.setText(movie.getYear());
 
@@ -75,9 +80,20 @@ public class MoviesCardsViewHolder extends RecyclerView.ViewHolder{
             }
 
         });
+        videoButtonMoreDetail.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("message").setTitle("titre");
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                // TODO Create a activity to display the detail of a movie
+            }
 
+        });
 
     }
+
 
     public class WatchButtonOnClickListener implements View.OnClickListener{
 
@@ -88,9 +104,7 @@ public class MoviesCardsViewHolder extends RecyclerView.ViewHolder{
         }
 
         @Override
-        public void onClick(View v)
-        {
-        }
+        public void onClick(View v){}
 
     };
 

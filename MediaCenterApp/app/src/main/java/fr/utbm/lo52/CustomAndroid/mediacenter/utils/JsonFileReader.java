@@ -14,13 +14,13 @@ import java.nio.charset.Charset;
  * Created by Christophe on 2016-11-29.
  */
 
-public class MediasJsonFile {
+public class JsonFileReader {
 
     private File jsonFile = null;
     protected JSONObject jsonObj = null;
 
 
-    public MediasJsonFile(String path, String jsonFile){
+    public JsonFileReader(String path, String jsonFile){
 
         this.jsonFile = new File(path, jsonFile);
         if( this.jsonFile.exists() ){

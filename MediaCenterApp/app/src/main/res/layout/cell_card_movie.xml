@@ -67,7 +67,8 @@
                     android:id="@+id/movie_button_watch"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                     />
 
                 <Button
                     android:text="+ Details"
@@ -76,7 +77,8 @@
                     android:id="@+id/movie_button_more_details"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    />
             </LinearLayout>
 
         </LinearLayout>

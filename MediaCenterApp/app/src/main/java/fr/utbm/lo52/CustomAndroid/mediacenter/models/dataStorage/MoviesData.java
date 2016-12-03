@@ -1,4 +1,4 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.models;
+package fr.utbm.lo52.CustomAndroid.mediacenter.models.dataStorage;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -7,13 +7,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.utbm.lo52.CustomAndroid.mediacenter.utils.MediasJsonFile;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
 
 /**
  * Created by Christophe on 2016-11-29.
  */
 
-public class MoviesData extends MediasJsonFile {
+public class MoviesData extends JsonFileReader {
 
     private List<Movie> listMovies = new ArrayList<>();
 

@@ -14,10 +14,11 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.views.MoviesCardsViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.MoviesData;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.dataStorage.MoviesData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
-import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.MoviesCardsAdapter;
+import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
 
 
 public class MoviesFragment extends Fragment {
@@ -40,7 +41,7 @@ public class MoviesFragment extends Fragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMovies);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));
-        recyclerView.setAdapter(new MoviesCardsAdapter(movies));
+        recyclerView.setAdapter(new CardsListAdapter<Movie>(movies, MoviesCardsViewHolder.class, R.layout.cell_card_movie));
 
         return rootView;
 
