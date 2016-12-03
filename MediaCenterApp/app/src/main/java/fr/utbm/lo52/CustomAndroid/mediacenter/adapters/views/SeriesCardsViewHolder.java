@@ -63,7 +63,7 @@ public class SeriesCardsViewHolder extends CardsViewHolder {
         final Serie serie = (Serie) data;
 
         serieTitleView.setText(serie.getTitle());
-        serieSubTitleView.setText("Year: " + serie.getYear() + "\nSeason" + serie.getSeason());
+        serieSubTitleView.setText("Year: " + serie.getYear() + "\nSeason " + serie.getSeason());
 
         File imgFile = new File(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/"), serie.getIllustrationPath());
 

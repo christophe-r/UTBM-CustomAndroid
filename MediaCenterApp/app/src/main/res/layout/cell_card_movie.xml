@@ -8,7 +8,8 @@
 
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="2dp"
-    app:cardElevation="2dp">
+    app:cardElevation="2dp"
+    android:id="@+id/movie_cardview">
 
     <!-- Les CardView possèdent des attributs supplémentaires dont
          - cardBackgroundColor
@@ -50,36 +51,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
                 android:id="@+id/movie_year"
                 android:layout_weight="0.37"
                 tools:text="Year"
                 android:paddingLeft="20dp" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <Button
-                    android:text="Watch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/movie_button_watch"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:textColor="@color/colorPrimary"
-                     />
-
-                <Button
-                    android:text="+ Details"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/movie_button_more_details"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:textColor="@color/colorPrimary"
-                    />
-            </LinearLayout>
+            <Button
+                android:text="Watch"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/movie_button_watch"
+                android:background="?android:selectableItemBackground"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="right" />
 
         </LinearLayout>
 

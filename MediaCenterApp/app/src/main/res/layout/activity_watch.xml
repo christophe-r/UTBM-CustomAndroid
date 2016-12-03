@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity">
+    tools:context="fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity"
+    android:id="@+id/fullscreen_content">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -13,43 +14,14 @@
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout
+
+    <VideoView
+        android:id="@+id/video_view_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content"
+        android:gravity="center"
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <!--<TextView
-                android:id="@+id/videoView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:keepScreenOn="true"
-                android:text="@string/dummy_content"
-                android:textColor="#33b5e5"
-                android:textSize="50sp"
-                android:textStyle="bold"
-                android:layout_weight="1" />-->
-
-            <VideoView
-                android:id="@+id/video_view_frame"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-
-                android:keepScreenOn="true"
-                />
-
-
-
-        </LinearLayout>
-
-
-    </FrameLayout>
+        android:keepScreenOn="true"
+        />
 
 </FrameLayout>

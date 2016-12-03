@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.io.File;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MovieDetailsActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
@@ -27,11 +28,12 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 
 public class MoviesCardsViewHolder extends CardsViewHolder {
 
-    private TextView videoTitleView;
-    private TextView videoYearView;
-    private ImageView videoImageView;
-    private Button videoButtonWatch;
-    private Button videoButtonMoreDetail;
+    private CardView movieCardView;
+    private TextView movieTitleView;
+    private TextView movieYearView;
+    private ImageView movieImageView;
+
+    private Button movieButtonWatch;
     private final Context context;
     private SharedPreferences sp;
 
@@ -42,19 +44,20 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
 
         sp = PreferenceManager.getDefaultSharedPreferences(context);
 
-        videoTitleView = (TextView) itemView.findViewById(R.id.movie_title);
-        videoYearView = (TextView) itemView.findViewById(R.id.movie_year);
-        videoImageView = (ImageView) itemView.findViewById(R.id.movie_image);
-        videoButtonWatch = (Button) itemView.findViewById(R.id.movie_button_watch);
-        videoButtonMoreDetail = (Button) itemView.findViewById(R.id.movie_button_more_details);
+        movieCardView = (CardView) itemView.findViewById(R.id.movie_cardview);
+        movieTitleView = (TextView) itemView.findViewById(R.id.movie_title);
+        movieYearView = (TextView) itemView.findViewById(R.id.movie_year);
+        movieImageView = (ImageView) itemView.findViewById(R.id.movie_image);
+        movieButtonWatch = (Button) itemView.findViewById(R.id.movie_button_watch);
 
     }
 
     @Override
     public void bind(Object data) {
         Movie movie = (Movie) data;
-        videoTitleView.setText(movie.getTitle());
-        videoYearView.setText(movie.getYear());
+
+        movieTitleView.setText(movie.getTitle());
+        movieYearView.setText(movie.getYear());
 
         File imgFile = new File(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/"), movie.getIllustrationPath());
 
@@ -63,13 +66,13 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
 
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(), bmOptions);
-            videoImageView.setImageBitmap(myBitmap);
+            movieImageView.setImageBitmap(myBitmap);
 
         } else {
             Log.e("File Not Found", imgFile.getPath());
         }
 
-        videoButtonWatch.setOnClickListener(new WatchButtonOnClickListener(movie){
+        movieButtonWatch.setOnClickListener(new WatchButtonOnClickListener(movie){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), WatchActivity.class);
@@ -80,16 +83,14 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
             }
 
         });
-        videoButtonMoreDetail.setOnClickListener(new View.OnClickListener(){
+
+        movieCardView.setOnClickListener(new WatchButtonOnClickListener(movie) {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("message").setTitle("titre");
-                AlertDialog dialog = builder.create();
-                dialog.show();
-                // TODO Create a activity to display the detail of a movie
+                Intent movieDetailsIntent = new Intent(context, MovieDetailsActivity.class);
+                movieDetailsIntent.putExtra("Movie", movie);
+                context.startActivity(movieDetailsIntent);
             }
-
         });
 
     }
@@ -107,7 +108,6 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
         public void onClick(View v){}
 
     };
-
 
 }
 
