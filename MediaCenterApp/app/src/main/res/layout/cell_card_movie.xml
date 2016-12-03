@@ -4,11 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_marginLeft="@dimen/card_margin"
+    android:layout_marginRight="@dimen/card_margin"
+    android:layout_marginTop="@dimen/card_margin"
 
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="2dp"
-    app:cardElevation="2dp"
+    app:cardElevation="@dimen/card_elevation"
     android:id="@+id/movie_cardview">
 
     <!-- Les CardView possèdent des attributs supplémentaires dont
@@ -42,7 +44,7 @@
                 tools:text="Title"
                 android:fontFamily="sans-serif"
                 android:textColor="#333"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:paddingTop="20dp"
                 android:paddingRight="20dp"
                 android:paddingLeft="20dp"
@@ -55,17 +57,17 @@
                 android:id="@+id/movie_year"
                 android:layout_weight="0.37"
                 tools:text="Year"
-                android:paddingLeft="20dp" />
+                android:paddingLeft="20dp"
+                android:textSize="16sp" />
 
 
             <Button
                 android:text="Watch"
-                android:layout_width="113dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/movie_button_watch"
-                android:background="?android:selectableItemBackground"
-                android:textColor="@color/colorPrimary"
-                android:layout_gravity="right" />
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorPrimary"/>
 
         </LinearLayout>
 

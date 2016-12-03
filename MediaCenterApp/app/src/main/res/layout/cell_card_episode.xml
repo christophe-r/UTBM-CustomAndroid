@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@drawable/bottom_border"
+        android:background="@drawable/top_border"
         android:layout_height="50dp">
 
 
@@ -18,13 +18,24 @@
             android:id="@+id/episode_number"
             android:layout_weight="0.09" />
 
-        <TextView
-            android:text="TextView"
-            android:gravity="center"
-            android:paddingLeft="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/episode_title"
-            android:layout_weight="1"
-            android:textAlignment="textStart" />
-    </LinearLayout>
+    <TextView
+        android:text="TextView"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/episode_title"
+        android:layout_weight="1"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorText"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/ic_play"
+        android:tint="@color/colorPrimary"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/episode_play"
+        android:layout_weight="0.09" />
+</LinearLayout>

@@ -1,4 +1,4 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.adapters.views;
+package fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import java.io.File;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MovieDetailsActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity;
-import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsViewHolder;
+import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 
@@ -26,7 +26,7 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.R;
  * Created by Christophe on 2016-11-29.
  */
 
-public class MoviesCardsViewHolder extends CardsViewHolder {
+public class MoviesCardViewHolder extends CardViewHolder {
 
     private CardView movieCardView;
     private TextView movieTitleView;
@@ -37,7 +37,7 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
     private final Context context;
     private SharedPreferences sp;
 
-    public MoviesCardsViewHolder(View itemView) {
+    public MoviesCardViewHolder(View itemView) {
         super(itemView);
 
         context = itemView.getContext();
@@ -53,8 +53,8 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
     }
 
     @Override
-    public void bind(Object data) {
-        Movie movie = (Movie) data;
+    public void bind(final Object data) {
+        final Movie movie = (Movie) data;
 
         movieTitleView.setText(movie.getTitle());
         movieYearView.setText(movie.getYear());
@@ -72,7 +72,7 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
             Log.e("File Not Found", imgFile.getPath());
         }
 
-        movieButtonWatch.setOnClickListener(new WatchButtonOnClickListener(movie){
+        movieButtonWatch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), WatchActivity.class);
@@ -84,7 +84,7 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
 
         });
 
-        movieCardView.setOnClickListener(new WatchButtonOnClickListener(movie) {
+        movieCardView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent movieDetailsIntent = new Intent(context, MovieDetailsActivity.class);
@@ -96,18 +96,6 @@ public class MoviesCardsViewHolder extends CardsViewHolder {
     }
 
 
-    public class WatchButtonOnClickListener implements View.OnClickListener{
-
-        Movie movie;
-
-        public WatchButtonOnClickListener(Movie movie) {
-            this.movie = movie;
-        }
-
-        @Override
-        public void onClick(View v){}
-
-    };
 
 }
 

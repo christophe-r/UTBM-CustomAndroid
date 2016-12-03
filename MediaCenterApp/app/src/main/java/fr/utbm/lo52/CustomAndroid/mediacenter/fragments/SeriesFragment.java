@@ -16,9 +16,9 @@ import java.util.List;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
-import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.views.SeriesCardsViewHolder;
+import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.SeriesCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Serie;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.dataStorage.SeriesData;
+import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.SeriesData;
 
 
 public class SeriesFragment extends Fragment {
@@ -29,19 +29,18 @@ public class SeriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final FragmentActivity c = getActivity();
 
-        View rootView =  inflater.inflate(R.layout.fragment_movies, container, false);
+        View rootView =  inflater.inflate(R.layout.fragment_list, container, false);
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
 
         SeriesData jsonData = new SeriesData(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/"), "medias_series.json");
-        jsonData.readSeries();
 
         List<Serie> series = jsonData.getListSeries();
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMovies);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewListCards);
         //recyclerView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));
-        recyclerView.setAdapter(new CardsListAdapter<Serie>(series, SeriesCardsViewHolder.class, R.layout.cell_card_serie));
+        recyclerView.setAdapter(new CardsListAdapter<Serie>(series, SeriesCardViewHolder.class, R.layout.cell_card_serie));
 
         return rootView;
     }

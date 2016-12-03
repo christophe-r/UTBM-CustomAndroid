@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.HomeFragment;
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.MoviesFragment;
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.MusicFragment;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new MusicFragment();
                 break;
             default:
-                fragment = new MoviesFragment();
+                fragment = new HomeFragment();
                 break;
 
         }

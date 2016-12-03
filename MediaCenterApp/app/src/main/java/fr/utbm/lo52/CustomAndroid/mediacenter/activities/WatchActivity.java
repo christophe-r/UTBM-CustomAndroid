@@ -108,7 +108,6 @@ public class WatchActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_watch);
 
-
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
         //initialize the VideoView
@@ -118,9 +117,6 @@ public class WatchActivity extends AppCompatActivity {
         myVideoView.setMediaController(mediaController);
         myVideoView.setVideoPath(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/")+i.getStringExtra("VIDEO_PATH"));
         myVideoView.start();
-
-
-
 
         mVisible = true;
         mContentView = findViewById(R.id.fullscreen_content);

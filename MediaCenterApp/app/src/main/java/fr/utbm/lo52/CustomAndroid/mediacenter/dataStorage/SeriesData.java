@@ -1,4 +1,4 @@
-package fr.utbm.lo52.CustomAndroid.mediacenter.models.dataStorage;
+package fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,9 +21,10 @@ public class SeriesData extends JsonFileReader {
 
     public SeriesData(String path, String jsonFile) {
         super(path, jsonFile);
+        this.parse();
     }
 
-    public void readSeries(){
+    public void parse(){
 
         if( jsonObj != null ){
 
