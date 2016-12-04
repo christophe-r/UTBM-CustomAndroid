@@ -1,6 +1,7 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -42,8 +43,6 @@ public class MainActivity extends AppCompatActivity
         // "Home" as default
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
         navigationView.getMenu().getItem(0).setChecked(true);
-
-
 
     }
 
@@ -91,6 +90,9 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment;
 
         switch(id){
+            case R.id.nav_home:
+                fragment = new HomeFragment();
+                break;
             case R.id.nav_movies:
                 fragment = new MoviesFragment();
                 break;
@@ -114,4 +116,12 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+    }
+
 }
