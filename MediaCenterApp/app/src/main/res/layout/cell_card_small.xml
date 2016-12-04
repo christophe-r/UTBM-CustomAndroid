@@ -6,6 +6,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:background="@drawable/top_border"
+        android:id="@+id/small_cardview"
         android:layout_height="50dp">
 
 
@@ -15,7 +16,7 @@
             android:padding="2dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/episode_number"
+            android:id="@+id/small_number"
             android:layout_weight="0.09" />
 
     <TextView
@@ -24,7 +25,7 @@
         android:paddingLeft="2dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/episode_title"
+        android:id="@+id/small_title"
         android:layout_weight="1"
         android:textAlignment="textStart"
         android:textColor="@color/colorText"
@@ -36,6 +37,6 @@
         app:srcCompat="@drawable/ic_play"
         android:tint="@color/colorPrimary"
         android:background="?android:selectableItemBackground"
-        android:id="@+id/episode_play"
+        android:id="@+id/small_img"
         android:layout_weight="0.09" />
 </LinearLayout>

@@ -1,11 +1,14 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by vmars on 03/12/2016.
@@ -19,7 +22,8 @@ public class CardsListAdapter<T> extends RecyclerView.Adapter<CardViewHolder> {
 
     public CardsListAdapter(List<T> list, Class viewHolder, int ressourceLayout) {
         this.objectsList = list;
-       // TODO checks if the viewHolder Class extends from CardViewHolder
+        if(!CardViewHolder.class.isAssignableFrom(viewHolder))
+            Log.e(TAG, "CardsListAdapter: Error incompatible class viewHolder, it must be inherited from CardViewHolder");
         this.viewHolderClass = viewHolder;
         this.ressourceLayout = ressourceLayout;
     }
@@ -43,6 +47,7 @@ public class CardsListAdapter<T> extends RecyclerView.Adapter<CardViewHolder> {
 
     @Override
     public int getItemCount() {
+        Log.d(TAG, "getItemCount: " + viewHolderClass + "eeeeeeeeeeeeeeeeeeeee" + objectsList.size());
         return objectsList.size();
     }
 

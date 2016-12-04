@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MoviesData;
+import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MusicsData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.PreviewData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.SeriesData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Preview;
@@ -31,7 +32,7 @@ public class ApplicationMediaCenter extends Application {
         String path = sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/");
         Factory.set("Data-movies", new MoviesData(path, "medias_movies.json"));
         Factory.set("Data-series", new SeriesData(path, "medias_series.json"));
-        Factory.set("Data-music", new Object());
+        Factory.set("Data-music", new MusicsData(path, "medias_music.json"));
 
         Factory.set("Preview-movies", new PreviewData(path, "medias_movies.json", "movies" ));
         Factory.set("Preview-series", new PreviewData(path, "medias_series.json", "series" ));

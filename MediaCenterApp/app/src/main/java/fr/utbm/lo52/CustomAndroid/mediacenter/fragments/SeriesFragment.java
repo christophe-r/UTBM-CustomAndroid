@@ -33,7 +33,7 @@ public class SeriesFragment extends Fragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewListCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));
-        recyclerView.setAdapter(new CardsListAdapter<Serie>(seriesData.getList(), SeriesCardViewHolder.class, R.layout.cell_card_serie));
+        recyclerView.setAdapter(new CardsListAdapter<Serie>(seriesData.getList(), SeriesCardViewHolder.class, R.layout.cell_card_big));
 
         return rootView;
     }

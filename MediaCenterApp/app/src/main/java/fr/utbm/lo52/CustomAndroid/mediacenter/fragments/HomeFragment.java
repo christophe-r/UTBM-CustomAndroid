@@ -1,9 +1,6 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.fragments;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,7 +36,6 @@ public class HomeFragment extends Fragment {
         PreviewData moviesPreviewData = (PreviewData) Factory.get("Preview-movies");
         PreviewData seriesPreviewData = (PreviewData) Factory.get("Preview-series");
         PreviewData musicsPreviewData = (PreviewData) Factory.get("Preview-music");
-
 
         recyclerViewHomeMovies = (RecyclerView) rootView.findViewById(R.id.recyclerViewHomeMovies);
         recyclerViewHomeMovies.setLayoutManager(new LinearLayoutManager(c, LinearLayoutManager.HORIZONTAL, false));

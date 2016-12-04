@@ -3,49 +3,47 @@ package fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.BigCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Episode;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Serie;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Album;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Track;
 
 /**
- * Created by vmars on 03/12/2016.
+ * Created by vmars on 04/12/2016.
  */
 
-public class SeriesCardViewHolder extends BigCardViewHolder {
+public class MusicCardViewHolder extends BigCardViewHolder {
 
     private boolean isEpisodeMenuOpen = false;
     private Drawable iconClose;
     private Drawable iconOpen;
 
-    protected SeriesCardViewHolder(View itemView) {
+    protected MusicCardViewHolder(View itemView) {
         super(itemView);
 
         iconOpen = context.getResources().getDrawable(R.drawable.ic_more_open_24dp);
         iconClose = context.getResources().getDrawable(R.drawable.ic_more_close_24dp);
 
-        buttonView.setText("Episodes");
+        buttonView.setText("Tracks");
         buttonView.setCompoundDrawablesWithIntrinsicBounds(null, null, iconClose, null);
     }
 
     @Override
     public void bind(Object data) {
 
-        final Serie serie = (Serie) data;
+        final Album album = (Album) data;
 
-        titleView.setText(serie.getTitle());
-        subTitleView.setText("Season " + serie.getSeason() + "\nYear: " + serie.getYear());
+        titleView.setText(album.getTitle());
+        subTitleView.setText("Author " + album.getAuthor() + "\nYear: " + album.getYear());
 
         subRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        subRecyclerView.setAdapter(new CardsListAdapter<Episode>(serie.getEpisodes(), EpisodeCardViewHolder.class, R.layout.cell_card_small));
+        subRecyclerView.setAdapter(new CardsListAdapter<Track>(album.getTracks(), TrackCardViewHolder.class, R.layout.cell_card_small));
 
-        setImage(serie.getIllustrationPath());
+        setImage(album.getIllustrationPath());
 
         buttonView.setOnClickListener(new View.OnClickListener(){
             @Override

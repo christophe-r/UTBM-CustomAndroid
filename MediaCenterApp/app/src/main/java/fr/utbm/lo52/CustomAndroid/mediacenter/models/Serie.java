@@ -28,7 +28,7 @@ public class Serie {
         this.episodes.add(episode);
     }
 
-    public List<Episode> getEpisode(){
+    public List<Episode> getEpisodes(){
         return this.episodes;
     }
 

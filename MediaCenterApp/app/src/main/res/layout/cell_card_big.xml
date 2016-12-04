@@ -11,21 +11,20 @@
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="2dp"
     app:cardElevation="@dimen/card_elevation"
-    android:id="@+id/movie_cardview">
-
-    <!-- Les CardView possèdent des attributs supplémentaires dont
-         - cardBackgroundColor
-         - cardElevation pour l'élévation (donc aussi l'ombre)
-         - cardCornerRadius pour arrondir les angles
-     -->
-
+    android:id="@+id/big_cardview">
     <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/big_mainlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
         <ImageView
-            android:id="@+id/movie_image"
+            android:id="@+id/big_image"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:src="@drawable/ic_menu_gallery"
@@ -37,7 +36,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/movie_title"
+                android:id="@+id/big_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
@@ -54,22 +53,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:id="@+id/movie_year"
+                android:id="@+id/big_subTitle"
                 android:layout_weight="0.37"
-                tools:text="Year"
+                tools:text="SubTitle"
                 android:paddingLeft="20dp"
                 android:textSize="16sp" />
 
 
             <Button
-                android:text="Watch"
+                android:text="Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/movie_button_watch"
+                android:id="@+id/big_button"
                 android:background="?attr/selectableItemBackground"
                 android:textColor="@color/colorPrimary"/>
 
+            </LinearLayout>
+
         </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/big_sub_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
