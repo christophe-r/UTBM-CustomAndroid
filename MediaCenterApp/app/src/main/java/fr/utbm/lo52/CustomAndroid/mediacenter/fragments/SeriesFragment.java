@@ -43,6 +43,6 @@ public class SeriesFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
-        getActivity().setTitle("Series");
+        getActivity().setTitle(getString(R.string.title_series));
     }
 }

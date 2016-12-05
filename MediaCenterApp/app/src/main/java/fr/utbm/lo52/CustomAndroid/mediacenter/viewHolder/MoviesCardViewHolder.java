@@ -3,6 +3,7 @@ package fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder;
 import android.content.Intent;
 import android.view.View;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MovieDetailsActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.BigCardViewHolder;
@@ -25,7 +26,7 @@ public class MoviesCardViewHolder extends BigCardViewHolder {
 
         titleView.setText(movie.getTitle());
         subTitleView.setText(movie.getYear());
-        buttonView.setText("Watch");
+        buttonView.setText(R.string.label_watch);
         mainLayout.removeView(subRecyclerView);
 
         setImage(movie.getIllustrationPath());

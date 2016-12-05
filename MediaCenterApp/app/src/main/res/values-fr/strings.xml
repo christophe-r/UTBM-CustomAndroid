@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Media Center</string>
+
+    <string name="navigation_drawer_open">Ouvrir le volet de navigation</string>
+    <string name="navigation_drawer_close">Fermer le volet de navigation</string>
+
+    <string name="action_settings">Paramètres</string>
+
+    <string name="title_activity_settings">Paramètres</string>
+
+
+    <!-- Strings related to Settings -->
+    <string name="pref_mediacenter_path">Chemin du Media Center</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_movies">Films</string>
+    <string name="title_music">Musique</string>
+    <string name="title_series">Séries</string>
+    <string name="label_year">Année :</string>
+    <string name="label_director">Réalisateur :</string>
+    <string name="label_actors">Acteurs :</string>
+    <string name="label_summary">Résumé :</string>
+    <string name="label_last_movies">Derniers films</string>
+    <string name="label_last_series">Dernières séries</string>
+    <string name="label_last_music">Dernières musiques</string>
+    <string name="label_watch">Regarder</string>
+    <string name="label_tracks">Pistes</string>
+    <string name="label_episodes">Épisodes</string>
+    <string name="label_season">Saison :</string>
+    <string name="label_author">Auteurs :</string>
+
+</resources>

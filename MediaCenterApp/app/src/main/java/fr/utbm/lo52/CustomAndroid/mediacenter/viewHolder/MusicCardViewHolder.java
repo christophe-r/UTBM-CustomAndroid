@@ -28,7 +28,7 @@ public class MusicCardViewHolder extends BigCardViewHolder {
         iconOpen = context.getResources().getDrawable(R.drawable.ic_more_open_24dp);
         iconClose = context.getResources().getDrawable(R.drawable.ic_more_close_24dp);
 
-        buttonView.setText("Tracks");
+        buttonView.setText(R.string.label_tracks);
         buttonView.setCompoundDrawablesWithIntrinsicBounds(null, null, iconClose, null);
     }
 
@@ -38,7 +38,7 @@ public class MusicCardViewHolder extends BigCardViewHolder {
         final Album album = (Album) data;
 
         titleView.setText(album.getTitle());
-        subTitleView.setText("Author " + album.getAuthor() + "\nYear: " + album.getYear());
+        subTitleView.setText(context.getString(R.string.label_author)+" " + album.getAuthor() + "\n"+context.getString(R.string.label_year)+" " + album.getYear());
 
         subRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         subRecyclerView.setAdapter(new CardsListAdapter<Track>(album.getTracks(), TrackCardViewHolder.class, R.layout.cell_card_small));

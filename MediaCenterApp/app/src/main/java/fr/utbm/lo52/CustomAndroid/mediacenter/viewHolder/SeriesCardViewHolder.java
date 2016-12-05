@@ -30,7 +30,7 @@ public class SeriesCardViewHolder extends BigCardViewHolder {
         iconOpen = context.getResources().getDrawable(R.drawable.ic_more_open_24dp);
         iconClose = context.getResources().getDrawable(R.drawable.ic_more_close_24dp);
 
-        buttonView.setText("Episodes");
+        buttonView.setText(R.string.label_episodes);
         buttonView.setCompoundDrawablesWithIntrinsicBounds(null, null, iconClose, null);
     }
 
@@ -40,7 +40,7 @@ public class SeriesCardViewHolder extends BigCardViewHolder {
         final Serie serie = (Serie) data;
 
         titleView.setText(serie.getTitle());
-        subTitleView.setText("Season " + serie.getSeason() + "\nYear: " + serie.getYear());
+        subTitleView.setText(context.getString(R.string.label_season) + " " + serie.getSeason() + "\n"+ context.getString(R.string.label_year) + " " + serie.getYear());
 
         subRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         subRecyclerView.setAdapter(new CardsListAdapter<Episode>(serie.getEpisodes(), EpisodeCardViewHolder.class, R.layout.cell_card_small));

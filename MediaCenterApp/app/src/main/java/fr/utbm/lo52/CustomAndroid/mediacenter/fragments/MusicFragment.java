@@ -44,6 +44,6 @@ public class MusicFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Music");
+        getActivity().setTitle(getString(R.string.title_music));
     }
 }

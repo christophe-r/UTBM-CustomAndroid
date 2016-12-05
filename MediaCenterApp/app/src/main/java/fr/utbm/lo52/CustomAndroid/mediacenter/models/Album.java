@@ -14,9 +14,10 @@ public class Album {
     private String illustrationPath;
     private List<Track> tracks = new ArrayList<>();
 
-    public Album(String title, String illustrationPath, String year) {
+    public Album(String title, String author, String illustrationPath, String year) {
         this.illustrationPath = illustrationPath;
         this.title = title;
+        this.author = author;
         this.year = year;
     }
 

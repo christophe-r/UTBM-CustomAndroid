@@ -46,7 +46,7 @@
                         android:weightSum="1">
 
                         <TextView
-                            android:text="Year:"
+                            android:text="@string/label_year"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/text_year"
@@ -60,7 +60,7 @@
                             android:id="@+id/movie_year" />
 
                         <TextView
-                            android:text="Director:"
+                            android:text="@string/label_director"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/text_director"
@@ -74,7 +74,7 @@
                             android:id="@+id/movie_director" />
 
                         <TextView
-                            android:text="Actor(s):"
+                            android:text="@string/label_actors"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/text_actors"
@@ -92,7 +92,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:text="Summary:"
+                    android:text="@string/label_summary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_summary"

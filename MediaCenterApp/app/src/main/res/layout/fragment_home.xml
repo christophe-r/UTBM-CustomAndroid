@@ -14,67 +14,87 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:padding="7dp"
+                android:layout_margin="7dp">
 
-                <TextView
-                    android:text="Last Movies: "
-                    android:paddingTop="10dp"
-                    android:paddingLeft="5dp"
-                    android:paddingBottom="5dp"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:textSize="24sp" />
-                <android.support.v7.widget.RecyclerView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/recyclerViewHomeMovies"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"/>
-            </LinearLayout>
+                    android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
+                    <TextView
+                        android:text="@string/label_last_movies"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+                    <android.support.v7.widget.RecyclerView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/recyclerViewHomeMovies"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:padding="7dp"
+                android:layout_margin="7dp">
 
-                <TextView
-                    android:text="Last Series:"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="5dp"
-                    android:paddingBottom="5dp"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:textSize="24sp" />
-                <android.support.v7.widget.RecyclerView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/recyclerViewHomeSeries"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="@string/label_last_series"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+                    <android.support.v7.widget.RecyclerView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/recyclerViewHomeSeries"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:padding="7dp"
+                android:layout_margin="7dp">
 
-                <TextView
-                    android:text="Last musics:"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="5dp"
-                    android:paddingBottom="5dp"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorText"
-                    android:textSize="24sp" />
-                <android.support.v7.widget.RecyclerView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/recyclerViewHomeMusics"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"/>
-            </LinearLayout>
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="@string/label_last_music"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+                    <android.support.v7.widget.RecyclerView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/recyclerViewHomeMusics"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

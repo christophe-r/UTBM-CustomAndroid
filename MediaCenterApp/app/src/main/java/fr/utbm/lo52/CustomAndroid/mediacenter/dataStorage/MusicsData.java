@@ -36,6 +36,7 @@ public class MusicsData  extends JsonFileReader {
                     JSONObject c = data.getJSONObject(i);
 
                     Album album = new Album(c.getString("titleAlbum"),
+                            c.getString("author"),
                             c.getString("illustrationPath"),
                             c.getString("year"));
 

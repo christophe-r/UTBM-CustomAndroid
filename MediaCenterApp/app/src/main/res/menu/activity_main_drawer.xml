@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Home" />
+            android:title="@string/title_home" />
 
     </group>
     <group android:checkableBehavior="single"
@@ -15,15 +15,15 @@
         <item
             android:id="@+id/nav_movies"
             android:icon="@drawable/ic_menu_movies"
-            android:title="Movies" />
+            android:title="@string/title_movies" />
         <item
             android:id="@+id/nav_series"
             android:icon="@drawable/ic_menu_series"
-            android:title="Series" />
+            android:title="@string/title_series" />
         <item
             android:id="@+id/nav_music"
             android:icon="@drawable/ic_menu_music"
-            android:title="Music" />
+            android:title="@string/title_music" />
     </group>
 
 </menu>

@@ -29,7 +29,7 @@ public class TrackCardViewHolder extends SmallCardViewHolder {
 
                 Intent intent = new Intent(v.getContext(), WatchActivity.class);
 
-                intent.putExtra("VIDEO_TITLE","Episode " + track.getTrackNumber() + ": " + track.getTitle());
+                intent.putExtra("VIDEO_TITLE", track.getTrackNumber() + " - " + track.getTitle());
                 intent.putExtra("VIDEO_PATH", track.getMediaPath());
                 v.getContext().startActivity(intent);
             }
