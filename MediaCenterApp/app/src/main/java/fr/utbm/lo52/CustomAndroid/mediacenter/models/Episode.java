@@ -1,11 +1,13 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.models;
 
+import java.io.Serializable;
+
 /**
  * Created by vmars on 03/12/2016.
  */
 
 
-public class Episode {
+public class Episode implements Serializable {
 
     private String EpNumber;
     private String title;

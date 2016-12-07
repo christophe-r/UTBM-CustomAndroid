@@ -1,5 +1,6 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by vmars on 03/12/2016.
  */
 
-public class Serie {
+public class Serie implements Serializable {
 
     private String title;
     private String year;

@@ -6,6 +6,7 @@ import android.view.View;
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.SmallCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Episode;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
 
 /**
  * Created by vmars on 03/12/2016.
@@ -27,12 +28,7 @@ public class EpisodeCardViewHolder extends SmallCardViewHolder {
         imageView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(v.getContext(), WatchActivity.class);
-
-                intent.putExtra("VIDEO_TITLE","Episode " + episode.getEpNumber() + ": " + episode.getTitle());
-                intent.putExtra("VIDEO_PATH", episode.getMediaPath());
-                v.getContext().startActivity(intent);
+                IntentsHelper.startWatchActivity("Episode " + episode.getEpNumber() + ": " + episode.getTitle(),  episode.getMediaPath());
             }
 
         });

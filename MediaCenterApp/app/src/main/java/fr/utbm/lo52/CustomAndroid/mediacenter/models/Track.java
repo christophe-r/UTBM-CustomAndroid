@@ -1,12 +1,12 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.models;
 
-import android.util.Log;
+import java.io.Serializable;
 
 /**
  * Created by vmars on 04/12/2016.
  */
 
-public class Track {
+public class Track implements Serializable {
 
     private String trackNumber;
     private String title;

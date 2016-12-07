@@ -31,7 +31,7 @@ public class MusicFragment extends Fragment {
 
         View rootView =  inflater.inflate(R.layout.fragment_list, container, false);
 
-        MusicsData musicsData = (MusicsData) Factory.get("Data-music");
+        MusicsData musicsData = (MusicsData) Factory.get("JsonData-music");
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewListCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));

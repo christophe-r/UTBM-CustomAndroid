@@ -19,6 +19,7 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -103,8 +104,8 @@ public class WatchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent i = getIntent();
-        setTitle(i.getStringExtra("VIDEO_TITLE"));
+        String[] intentData = IntentsHelper.getWatchActivityData(getIntent());
+        setTitle(intentData[0]);
 
         setContentView(R.layout.activity_watch);
 
@@ -115,7 +116,7 @@ public class WatchActivity extends AppCompatActivity {
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(myVideoView);
         myVideoView.setMediaController(mediaController);
-        myVideoView.setVideoPath(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/")+i.getStringExtra("VIDEO_PATH"));
+        myVideoView.setVideoPath(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/")+intentData[1]);
         myVideoView.start();
 
         mVisible = true;

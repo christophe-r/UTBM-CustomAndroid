@@ -8,6 +8,7 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MovieDetailsActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.BigCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
 
 /**
  * Created by Christophe on 2016-11-29.
@@ -34,11 +35,7 @@ public class MoviesCardViewHolder extends BigCardViewHolder {
         buttonView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), WatchActivity.class);
-
-                intent.putExtra("VIDEO_TITLE", movie.getTitle());
-                intent.putExtra("VIDEO_PATH", movie.getMediaPath());
-                v.getContext().startActivity(intent);
+                IntentsHelper.startWatchActivity( movie.getTitle(),  movie.getMediaPath());
             }
 
         });
@@ -46,9 +43,7 @@ public class MoviesCardViewHolder extends BigCardViewHolder {
         cardView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent movieDetailsIntent = new Intent(context, MovieDetailsActivity.class);
-                movieDetailsIntent.putExtra("Movie", movie);
-                context.startActivity(movieDetailsIntent);
+                IntentsHelper.startDetailActivity(MovieDetailsActivity.class, movie);
             }
         });
 

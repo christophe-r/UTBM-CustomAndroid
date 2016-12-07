@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.HomeFragment;
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.MoviesFragment;
@@ -23,6 +24,11 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.SeriesFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private HomeFragment homeFragment;
+    private MoviesFragment moviesFragment;
+    private SeriesFragment seriesFragment;
+    private MusicFragment musicFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        homeFragment = new HomeFragment();
+        moviesFragment = new MoviesFragment();
+        seriesFragment = new SeriesFragment();
+        musicFragment = new MusicFragment();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -91,25 +103,26 @@ public class MainActivity extends AppCompatActivity
 
         switch(id){
             case R.id.nav_home:
-                fragment = new HomeFragment();
+                fragment = homeFragment;
                 break;
             case R.id.nav_movies:
-                fragment = new MoviesFragment();
+                fragment = moviesFragment;
                 break;
             case R.id.nav_series:
-                fragment = new SeriesFragment();
+                fragment = seriesFragment;
                 break;
             case R.id.nav_music:
-                fragment = new MusicFragment();
+                fragment = musicFragment;
                 break;
             default:
-                fragment = new HomeFragment();
+                fragment = homeFragment;
                 break;
 
         }
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragment);
+        ft.addToBackStack(null);
         ft.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -121,6 +134,29 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+
+    }
+
+    public void onClickDispatcher(View v){
+        Fragment fragment= null;
+        switch (v.getId()){
+            case R.id.label_home_movies:
+                fragment = moviesFragment;
+                break;
+            case R.id.label_home_series:
+                fragment = seriesFragment;
+                break;
+            case R.id.label_home_music:
+                fragment = musicFragment;
+                break;
+        }
+
+        if(fragment != null){
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
+        }
 
     }
 

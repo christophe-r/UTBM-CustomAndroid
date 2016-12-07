@@ -2,15 +2,18 @@ package fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder;
 
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
+import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MovieDetailsActivity;
+import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MusicDetailActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.BigCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Album;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Track;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
 
 /**
  * Created by vmars on 04/12/2016.
@@ -42,6 +45,7 @@ public class MusicCardViewHolder extends BigCardViewHolder {
 
         subRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         subRecyclerView.setAdapter(new CardsListAdapter<Track>(album.getTracks(), TrackCardViewHolder.class, R.layout.cell_card_small));
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
 
         setImage(album.getIllustrationPath());
 
@@ -60,6 +64,15 @@ public class MusicCardViewHolder extends BigCardViewHolder {
             }
 
         });
+
+
+        cardView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                IntentsHelper.startDetailActivity(MusicDetailActivity.class, album);
+            }
+        });
+
 
     }
 

@@ -7,7 +7,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MusicDetailActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Album;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Preview;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Track;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
 
@@ -15,9 +17,10 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
  * Created by vmars on 04/12/2016.
  */
 
-public class MusicsData  extends JsonFileReader {
+public class MusicsData  extends JsonFileReader implements PreviewableData{
 
     private List<Album> listAlbum = new ArrayList<>();
+    private List<Preview> listAlbumPreview = new ArrayList<>();
 
     public MusicsData(String path, String jsonFile) {
         super(path, jsonFile);
@@ -41,6 +44,7 @@ public class MusicsData  extends JsonFileReader {
                             c.getString("year"));
 
                     listAlbum.add(album);
+                    listAlbumPreview.add(new Preview(c.getString("titleAlbum"), c.getString("illustrationPath"), album, MusicDetailActivity.class));
 
                     JSONArray track = null;
                     track = c.getJSONArray("tracks");
@@ -62,4 +66,9 @@ public class MusicsData  extends JsonFileReader {
         return listAlbum;
     }
 
+
+    @Override
+    public List<Preview> getPreview() {
+        return listAlbumPreview;
+    }
 }

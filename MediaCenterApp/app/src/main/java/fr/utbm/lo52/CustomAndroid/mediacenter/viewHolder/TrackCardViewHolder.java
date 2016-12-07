@@ -1,11 +1,10 @@
 package fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder;
 
-import android.content.Intent;
 import android.view.View;
 
-import fr.utbm.lo52.CustomAndroid.mediacenter.activities.WatchActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.SmallCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Track;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
 
 /**
  * Created by vmars on 04/12/2016.
@@ -26,12 +25,7 @@ public class TrackCardViewHolder extends SmallCardViewHolder {
         imageView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(v.getContext(), WatchActivity.class);
-
-                intent.putExtra("VIDEO_TITLE", track.getTrackNumber() + " - " + track.getTitle());
-                intent.putExtra("VIDEO_PATH", track.getMediaPath());
-                v.getContext().startActivity(intent);
+                IntentsHelper.startWatchActivity( track.getTrackNumber() + " - " + track.getTitle(), track.getMediaPath());
             }
 
         });

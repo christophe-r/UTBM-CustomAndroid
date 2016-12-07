@@ -3,52 +3,63 @@ package fr.utbm.lo52.CustomAndroid.mediacenter.activities;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.Html;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.File;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
+import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Album;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Track;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
+import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.TrackCardViewHolder;
 
-public class MovieDetailsActivity extends AppCompatActivity {
+/**
+ * Created by vmars on 07/12/2016.
+ */
+
+public class MusicDetailActivity extends AppCompatActivity {
 
     private SharedPreferences sp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_movie);
+        setContentView(R.layout.activity_details_music);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         sp = PreferenceManager.getDefaultSharedPreferences(this);
 
-        final Movie movie = (Movie) IntentsHelper.getDetailActivityData(getIntent());
+        final Album album = (Album) IntentsHelper.getDetailActivityData(getIntent());
 
-        setTitle(movie.getTitle());
+        setTitle(album.getTitle());
 
-        ((TextView) findViewById(R.id.movie_year)).setText(movie.getYear());
-        ((TextView) findViewById(R.id.movie_director)).setText(movie.getDirector());
-        ((TextView) findViewById(R.id.movie_actors)).setText((movie.getActors().equals(""))?"No actors":movie.getActors());
-        ((TextView) findViewById(R.id.movie_summary)).setText(Html.fromHtml(movie.getSummary()));
+        ((TextView) findViewById(R.id.music_year)).setText(album.getYear());
+        ((TextView) findViewById(R.id.music_autor)).setText(album.getAuthor());
 
-        ImageView movieIllustration = (ImageView) findViewById(R.id.movie_illustration);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.movie_floatingActionButton_watch);
+        ImageView movieIllustration = (ImageView) findViewById(R.id.music_illustration);
+        RecyclerView subRecyclerView = (RecyclerView) findViewById(R.id.music_detail_sub_recycler_view);
 
-        File imgFile = new File(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/"), movie.getIllustrationPath());
+        subRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        //subRecyclerView.setNestedScrollingEnabled(false);
+        subRecyclerView.setAdapter(new CardsListAdapter<Track>(album.getTracks(), TrackCardViewHolder.class, R.layout.cell_card_small));
+
+
+        File imgFile = new File(sp.getString("pref_mediacenter_path", Environment.getExternalStorageDirectory()+"/MediaCenter/"), album.getIllustrationPath());
 
         if(imgFile.exists()){
             Log.v("File Found", imgFile.getAbsolutePath());
@@ -58,13 +69,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
             movieIllustration.setImageBitmap(myBitmap);
         }
 
-
-        fab.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                IntentsHelper.startWatchActivity(movie.getTitle(),  movie.getMediaPath());
-            }
-        });
     }
 
     @Override
@@ -76,4 +80,5 @@ public class MovieDetailsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -29,7 +29,7 @@ public class SeriesFragment extends Fragment {
 
         View rootView =  inflater.inflate(R.layout.fragment_list, container, false);
 
-        SeriesData seriesData = (SeriesData) Factory.get("Data-series");
+        SeriesData seriesData = (SeriesData) Factory.get("JsonData-series");
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewListCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));

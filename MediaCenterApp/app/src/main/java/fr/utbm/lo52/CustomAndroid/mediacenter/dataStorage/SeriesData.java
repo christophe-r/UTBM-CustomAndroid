@@ -7,7 +7,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MovieDetailsActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Episode;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Preview;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Serie;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
 
@@ -15,9 +17,10 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
  * Created by vmars on 03/12/2016.
  */
 
-public class SeriesData extends JsonFileReader {
+public class SeriesData extends JsonFileReader implements PreviewableData{
 
     private List<Serie> listSeries = new ArrayList<>();
+    private List<Preview> listSeriesPreview = new ArrayList<>();
 
     public SeriesData(String path, String jsonFile) {
         super(path, jsonFile);
@@ -42,6 +45,7 @@ public class SeriesData extends JsonFileReader {
                             c.getString("season"));
 
                     listSeries.add(serie);
+                    listSeriesPreview.add(new Preview(c.getString("titleSerie"),  c.getString("illustrationPath"), serie, Object.class)); // TODO create a series detail activity
 
                     JSONArray episode = null;
                     episode = c.getJSONArray("episodes");
@@ -64,4 +68,8 @@ public class SeriesData extends JsonFileReader {
     }
 
 
+    @Override
+    public List<Preview> getPreview() {
+        return listSeriesPreview;
+    }
 }

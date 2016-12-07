@@ -28,7 +28,7 @@ public class MoviesFragment extends Fragment {
 
         View rootView =  inflater.inflate(R.layout.fragment_list, container, false);
 
-        MoviesData moviesData = (MoviesData) Factory.get("Data-movies");
+        MoviesData moviesData = (MoviesData) Factory.get("JsonData-movies");
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewListCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));

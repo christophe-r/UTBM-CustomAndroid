@@ -17,6 +17,7 @@
     <string name="title_series">Séries</string>
     <string name="label_year">Année :</string>
     <string name="label_director">Réalisateur :</string>
+    <string name="label_autor">Auteur:</string>
     <string name="label_actors">Acteurs :</string>
     <string name="label_summary">Résumé :</string>
     <string name="label_last_movies">Derniers films</string>
