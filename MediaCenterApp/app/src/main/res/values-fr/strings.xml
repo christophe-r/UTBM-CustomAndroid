@@ -26,7 +26,7 @@
     <string name="label_watch">Regarder</string>
     <string name="label_tracks">Pistes</string>
     <string name="label_episodes">Épisodes</string>
-    <string name="label_season">Saison :</string>
+    <string name="label_season">Saison</string>
     <string name="label_author">Auteurs :</string>
 
 </resources>

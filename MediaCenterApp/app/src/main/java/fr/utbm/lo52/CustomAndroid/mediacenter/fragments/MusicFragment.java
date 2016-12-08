@@ -11,13 +11,10 @@ import android.view.ViewGroup;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
-import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MoviesData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MusicsData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Album;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.Factory;
-import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.MoviesCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.MusicCardViewHolder;
-import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.TrackCardViewHolder;
 
 
 public class MusicFragment extends Fragment {

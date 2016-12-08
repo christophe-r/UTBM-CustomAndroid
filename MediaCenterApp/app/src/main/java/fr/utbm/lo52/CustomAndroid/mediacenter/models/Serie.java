@@ -11,34 +11,15 @@ import java.util.List;
 public class Serie implements Serializable {
 
     private String title;
-    private String year;
     private String illustrationPath;
-    private String actors;
-    private String season;
-    private List<Episode> episodes;
+    private int lastSeasonNumber;
+    private List<Season> seasons;
 
-    public Serie(String title, String year, String illustrationPath, String actors, String season) {
+    public Serie(String title, String illustrationPath) {
         this.title = title;
-        this.year = year;
         this.illustrationPath = illustrationPath;
-        this.actors = actors;
-        this.season = season;
-        this.episodes = new ArrayList<>();
-    }
-    public void addEpisode(Episode episode){
-        this.episodes.add(episode);
-    }
-
-    public List<Episode> getEpisodes(){
-        return this.episodes;
-    }
-
-    public String getSeason() {
-        return season;
-    }
-
-    public void setSeason(String season) {
-        this.season = season;
+        this.seasons = new ArrayList<>();
+        this.lastSeasonNumber = 0;
     }
 
     public String getTitle() {
@@ -49,14 +30,6 @@ public class Serie implements Serializable {
         this.title = title;
     }
 
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
     public String getIllustrationPath() {
         return illustrationPath;
     }
@@ -65,14 +38,15 @@ public class Serie implements Serializable {
         this.illustrationPath = illustrationPath;
     }
 
-    public String getActors() {
-        return actors;
+    public void addSeason(Season season) {
+        this.seasons.add(season);
+        if(Integer.parseInt(season.getSeasonNumber()) > lastSeasonNumber){
+            lastSeasonNumber = Integer.parseInt(season.getSeasonNumber());
+            illustrationPath = season.getIllustrationPath();
+        }
     }
 
-    public void setActors(String actors) {
-        this.actors = actors;
+    public List<Season> getSeasons() {
+        return this.seasons;
     }
-
-
-
 }

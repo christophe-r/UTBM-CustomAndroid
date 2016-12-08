@@ -15,10 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.HomeFragment;
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.MoviesFragment;
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.MusicFragment;
-import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.fragments.SeriesFragment;
 
 public class MainActivity extends AppCompatActivity

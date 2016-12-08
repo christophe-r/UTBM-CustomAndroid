@@ -6,16 +6,13 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -26,10 +23,6 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.models.Album;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Track;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
 import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.TrackCardViewHolder;
-
-/**
- * Created by vmars on 07/12/2016.
- */
 
 public class MusicDetailActivity extends AppCompatActivity {
 
@@ -55,7 +48,6 @@ public class MusicDetailActivity extends AppCompatActivity {
         RecyclerView subRecyclerView = (RecyclerView) findViewById(R.id.music_detail_sub_recycler_view);
 
         subRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-        //subRecyclerView.setNestedScrollingEnabled(false);
         subRecyclerView.setAdapter(new CardsListAdapter<Track>(album.getTracks(), TrackCardViewHolder.class, R.layout.cell_card_small));
 
 

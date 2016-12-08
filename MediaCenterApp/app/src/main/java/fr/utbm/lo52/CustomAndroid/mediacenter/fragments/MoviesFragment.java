@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import fr.utbm.lo52.CustomAndroid.mediacenter.utils.Factory;
-import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.MoviesCardViewHolder;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
-import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MoviesData;
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
+import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.MoviesData;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Movie;
+import fr.utbm.lo52.CustomAndroid.mediacenter.utils.Factory;
+import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.MoviesCardViewHolder;
 
 
 public class MoviesFragment extends Fragment {

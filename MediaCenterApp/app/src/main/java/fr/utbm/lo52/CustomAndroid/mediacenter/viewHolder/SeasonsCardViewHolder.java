@@ -3,50 +3,47 @@ package fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
-import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MusicDetailActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.BigCardViewHolder;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Album;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Track;
-import fr.utbm.lo52.CustomAndroid.mediacenter.utils.IntentsHelper;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Episode;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Season;
 
 /**
- * Created by vmars on 04/12/2016.
+ * Created by vmars on 03/12/2016.
  */
 
-public class MusicCardViewHolder extends BigCardViewHolder {
+public class SeasonsCardViewHolder extends BigCardViewHolder {
 
     private boolean isEpisodeMenuOpen = false;
     private Drawable iconClose;
     private Drawable iconOpen;
 
-    protected MusicCardViewHolder(View itemView) {
+    protected SeasonsCardViewHolder(View itemView) {
         super(itemView);
 
         iconOpen = context.getResources().getDrawable(R.drawable.ic_more_open_24dp);
         iconClose = context.getResources().getDrawable(R.drawable.ic_more_close_24dp);
 
-        buttonView.setText(R.string.label_tracks);
+        buttonView.setText(R.string.label_episodes);
         buttonView.setCompoundDrawablesWithIntrinsicBounds(null, null, iconClose, null);
     }
 
     @Override
     public void bind(Object data) {
 
-        final Album album = (Album) data;
+        final Season season = (Season) data;
 
-        titleView.setText(album.getTitle());
-        subTitleView.setText(context.getString(R.string.label_author)+" " + album.getAuthor() + "\n"+context.getString(R.string.label_year)+" " + album.getYear());
+        titleView.setText(context.getString(R.string.label_season) + " " + season.getSeasonNumber());
+        subTitleView.setText(season.getTitle() + "\n" +
+                context.getString(R.string.label_year) + " " + season.getYear() + "\n" +
+                ((season.getActors().equals(""))?"":season.getActors()));
 
         subRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        subRecyclerView.setAdapter(new CardsListAdapter<Track>(album.getTracks(), TrackCardViewHolder.class, R.layout.cell_card_small));
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        subRecyclerView.setAdapter(new CardsListAdapter<Episode>(season.getEpisodes(), EpisodesCardViewHolder.class, R.layout.cell_card_small));
 
-        setImage(album.getIllustrationPath());
+        setImage(season.getIllustrationPath());
 
         buttonView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -63,15 +60,6 @@ public class MusicCardViewHolder extends BigCardViewHolder {
             }
 
         });
-
-
-        cardView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                IntentsHelper.startDetailActivity(MusicDetailActivity.class, album);
-            }
-        });
-
 
     }
 

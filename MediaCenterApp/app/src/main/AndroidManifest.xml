@@ -39,6 +39,9 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".activities.MovieDetailsActivity"/>
         <activity android:name=".activities.MusicDetailActivity"/>
+        <activity
+            android:name=".activities.SeasonActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
     </application>
 
 </manifest>

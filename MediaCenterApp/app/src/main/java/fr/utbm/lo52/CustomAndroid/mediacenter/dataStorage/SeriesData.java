@@ -5,11 +5,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import fr.utbm.lo52.CustomAndroid.mediacenter.activities.MovieDetailsActivity;
+import fr.utbm.lo52.CustomAndroid.mediacenter.activities.SeasonActivity;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Episode;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Preview;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Season;
 import fr.utbm.lo52.CustomAndroid.mediacenter.models.Serie;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
 
@@ -19,6 +22,7 @@ import fr.utbm.lo52.CustomAndroid.mediacenter.utils.JsonFileReader;
 
 public class SeriesData extends JsonFileReader implements PreviewableData{
 
+    private Map<String, Serie> mapSeries = new HashMap<>();
     private List<Serie> listSeries = new ArrayList<>();
     private List<Preview> listSeriesPreview = new ArrayList<>();
 
@@ -38,27 +42,39 @@ public class SeriesData extends JsonFileReader implements PreviewableData{
                 for (int i = 0; i < data.length(); i++) {
                     JSONObject c = data.getJSONObject(i);
 
-                    Serie serie = new Serie(c.getString("titleSerie"),
+                    Season season = new Season(c.getString("titleSerie"),
                             c.getString("year"),
                             c.getString("illustrationPath"),
                             c.getString("actors"),
                             c.getString("season"));
 
-                    listSeries.add(serie);
-                    listSeriesPreview.add(new Preview(c.getString("titleSerie"),  c.getString("illustrationPath"), serie, Object.class)); // TODO create a series detail activity
+                    if(mapSeries.containsKey(c.getString("titleSerie"))) {
+                        mapSeries.get(c.getString("titleSerie")).addSeason(season);
+
+                    }else{
+                        Serie serie = new Serie(c.getString("titleSerie"), c.getString("illustrationPath"));
+                        mapSeries.put(c.getString("titleSerie"), serie);
+                        serie.addSeason(season);
+                    }
+
+
 
                     JSONArray episode = null;
                     episode = c.getJSONArray("episodes");
                     for (int j = 0; j < episode.length(); j++) {
                         JSONObject d = episode.getJSONObject(j);
-                        serie.addEpisode(new Episode(d.getString("summary"), d.getString("mediaPath"), d.getString("episodeNb"), d.getString("titleEpisode")));
-
+                        season.addEpisode(new Episode(d.getString("summary"), d.getString("mediaPath"), d.getString("episodeNb"), d.getString("titleEpisode")));
                     }
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            listSeries = new ArrayList<Serie>(mapSeries.values());
+
+            for (Serie serie : listSeries)
+                listSeriesPreview.add(new Preview(serie.getTitle(),  serie.getIllustrationPath(), serie, SeasonActivity.class));
         }
 
     }

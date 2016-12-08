@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import fr.utbm.lo52.CustomAndroid.mediacenter.R;
 import fr.utbm.lo52.CustomAndroid.mediacenter.adapters.CardsListAdapter;
+import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.SeriesData;
+import fr.utbm.lo52.CustomAndroid.mediacenter.models.Serie;
 import fr.utbm.lo52.CustomAndroid.mediacenter.utils.Factory;
 import fr.utbm.lo52.CustomAndroid.mediacenter.viewHolder.SeriesCardViewHolder;
-import fr.utbm.lo52.CustomAndroid.mediacenter.models.Serie;
-import fr.utbm.lo52.CustomAndroid.mediacenter.dataStorage.SeriesData;
 
 
 public class SeriesFragment extends Fragment {
@@ -28,12 +26,14 @@ public class SeriesFragment extends Fragment {
         final FragmentActivity c = getActivity();
 
         View rootView =  inflater.inflate(R.layout.fragment_list, container, false);
+        int paddingInDp = (int) ( 7 * getResources().getDisplayMetrics().density + 0.5f);
+        rootView.setPadding(0, paddingInDp,0, 0);
 
         SeriesData seriesData = (SeriesData) Factory.get("JsonData-series");
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewListCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(c));
-        recyclerView.setAdapter(new CardsListAdapter<Serie>(seriesData.getList(), SeriesCardViewHolder.class, R.layout.cell_card_big));
+        recyclerView.setAdapter(new CardsListAdapter<Serie>(seriesData.getList(), SeriesCardViewHolder.class, R.layout.cell_card_preview));
 
         return rootView;
     }

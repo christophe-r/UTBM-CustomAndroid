@@ -22,8 +22,8 @@ import static android.content.ContentValues.TAG;
 
 public class PreviewCardViewHolder extends CardViewHolder {
 
-    private ImageView imagePreviewView;
-    private TextView titlePreviewView;
+    protected ImageView imagePreviewView;
+    protected TextView titlePreviewView;
 
     protected PreviewCardViewHolder(View itemView) {
         super(itemView);
