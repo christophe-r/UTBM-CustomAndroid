@@ -10,7 +10,7 @@ int nbr_device;
 
 int mlbin_init_usb(void)
 {
-	/*libusb_device **list;
+	libusb_device **list;
 	libusb_device **devices = NULL;
 	int count, ret, i;
 
@@ -89,9 +89,7 @@ not_found_error:
 list_error:
 	libusb_exit(NULL);
 error:
-	exit(1);*/
-
-	return 666;
+	exit(1);
 }
 
 int mlbin_free_usb(void)
