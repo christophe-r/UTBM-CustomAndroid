@@ -20,6 +20,11 @@ JNIEXPORT jint JNICALL Java_com_android_utbm_customandroid_MissileLauncherInterf
 	return mlbin_fire(device);
 }
 
+JNIEXPORT jint JNICALL Java_com_android_utbm_customandroid_MissileLauncherInterface_MlbinMoveUp(JNIEnv *env, jobject obj, jint device)
+{
+	return mlbin_move_up(device);
+}
+
 JNIEXPORT jint JNICALL Java_com_android_utbm_customandroid_MissileLauncherInterface_MlbinMoveDown(JNIEnv *env, jobject obj, jint device)
 {
 	return mlbin_move_down(device);

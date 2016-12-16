@@ -1,4 +1,4 @@
-package com.android.utbm.customandroid.MissileLauncherInterface;
+package com.android.utbm.customandroid;
 
 public class MissileLauncherInterface {
 
@@ -9,6 +9,7 @@ public class MissileLauncherInterface {
 	public native int MlbinInitUsb();
 	public native int MlbinFreeUsb();
 	public native int MlbinFire(int device);
+	public native int MlbinMoveUp(int device);
 	public native int MlbinMoveDown(int device);
 	public native int MlbinMoveLeft(int device);
 	public native int MlbinMoveRight(int device);

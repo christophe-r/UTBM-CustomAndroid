@@ -13,7 +13,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES:= $(call all-java-files-under, src)
 
-LOCAL_MODULE := com.android.utbm.customandroid.MissileLauncherInterface
+LOCAL_MODULE := com.android.utbm.customandroid
 
 include $(BUILD_JAVA_LIBRARY)
 
@@ -25,7 +25,7 @@ include $(BUILD_JAVA_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := com.android.utbm.customandroid.MissileLauncherInterface.xml
+LOCAL_MODULE := com.android.utbm.customandroid.xml
 
 LOCAL_MODULE_TAGS := optional
 

@@ -5,8 +5,9 @@ PRODUCT_PACKAGES += libusb \
 		    mlbin \
 		    libmlbin \
 		    libmlbin_jni \
-		    com.android.utbm.customandroid.MissileLauncherInterface \
-		    com.android.utbm.customandroid.MissileLauncherInterface.xml
+		    com.android.utbm.customandroid \
+		    com.android.utbm.customandroid.xml \
+		    MissileLauncherApp
 
 DEVICE_PACKAGE_OVERLAYS := device/utbm/utbm_customandroid/overlay
 

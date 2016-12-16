@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground"
+    tools:context="fr.utbm.lo52.CustomAndroid.MissileLauncher.MainActivity">
+
+    <fr.utbm.lo52.CustomAndroid.MissileLauncher.TargetView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="7.23"
+        android:id="@+id/target"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.21">
+
+        <TextView
+            android:text="@string/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.49"
+            android:textSize="36sp"
+            android:textStyle="normal|bold"
+            android:textColor="@color/colorText" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.47">
+
+            <Button
+                android:text="@string/btn_launch"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:theme="@style/SpecialButton"
+                android:id="@+id/launchBtn"
+                android:onClick="fireClick" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

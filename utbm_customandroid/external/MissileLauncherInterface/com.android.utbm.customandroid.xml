@@ -1,0 +1,5 @@
+
+<permissions>
+	<library name="com.android.utbm.customandroid" file="/system/framework/com.android.utbm.customandroid.jar" />
+</permissions>
+

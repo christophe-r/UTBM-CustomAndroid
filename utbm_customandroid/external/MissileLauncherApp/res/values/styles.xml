@@ -1,0 +1,41 @@
+<resources>
+
+    <!--<color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="colorBackground">#ededed</color>
+    <color name="colorDivider">#757575</color>
+    <color name="colorText">#212121</color>-->
+
+
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
+        <!--<item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#D32F2F</item>
+        <item name="colorAccent">#FFEB3B</item>-->
+    </style>
+
+    <style name="SpecialButton" parent="android:Widget.Holo.Light.Button">
+        <!--<item name="colorButtonNormal">#FFEB3B</item>-->
+        <item name="android:textColorPrimary">#F44336</item>
+    </style>
+
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+
+</resources>
